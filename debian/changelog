@@ -1,3 +1,9 @@
+aml (1.0.0-1+rpt1) unstable; urgency=medium
+
+  * Bump version to 1.0.0 from GitHub
+
+ -- Andri Yngvason <andri@yngvason.is>  Sun, 28 Jun 2026 16:30:00 +0000
+
 aml (0.3.0-3) unstable; urgency=medium
 
   * Change Maintainer to Han Gao (Closes: #1065737)
