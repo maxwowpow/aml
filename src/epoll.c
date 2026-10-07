@@ -98,7 +98,10 @@ static void epoll_emit_event(struct epoll_state* self,
 	}
 
 	enum aml_event aml_events = AML_EVENT_NONE;
-	if (event->events & EPOLLIN)
+	/* A hung-up or failed FD reads as EOF or as the error: report it as
+	 * readable, since epoll delivers EPOLLHUP and EPOLLERR whatever the
+	 * interest mask holds. */
+	if (event->events & (EPOLLIN | EPOLLHUP | EPOLLERR))
 		aml_events |= AML_EVENT_READ;
 	if (event->events & EPOLLOUT)
 		aml_events |= AML_EVENT_WRITE;
